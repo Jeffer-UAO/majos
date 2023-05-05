@@ -2,8 +2,8 @@
   background-color: rgb(240, 240, 240);
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+width: 100%;
   img {
     height: 66vh;
     object-fit: cover;
@@ -36,7 +36,8 @@
   .relate {
     padding: 10px;
     p {
-      margin-top: 50px;
+      margin-top: 0px;
+      margin-bottom: 10px;
       font-size: 1.2rem;
     }
   }

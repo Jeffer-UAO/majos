@@ -79,7 +79,7 @@ export function DetailProduct(props) {
             ))}
           </div>
         </div>
-        <FooterApp />
+      
       </div>
     );
   } else {
