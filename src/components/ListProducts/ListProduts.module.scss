@@ -1,5 +1,5 @@
 .listProduct{
-  padding-top: 0rem;
+  padding-top: 2rem;
 
   width: 100%;
 }
@@ -39,6 +39,7 @@
       border-top-left-radius: 5px;
       object-fit: cover;
       object-position: center center;
+      aspect-ratio: 1/1;
     }
 
     .title {

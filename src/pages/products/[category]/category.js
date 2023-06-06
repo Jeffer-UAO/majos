@@ -5,6 +5,7 @@ import {
   Footer,
   NotFound,
   FooterApp,
+  Redes,
   Separator,
 } from "@/components";
 
@@ -14,9 +15,8 @@ export default function category(props) {
 
   return (
     <div>
-      <BasicLayout>
-        <Separator />
-        <Separator />  
+      <BasicLayout>      
+      <Redes />
         {hasProduct ? (
           <Listproducts products={products} title={category.name} />
         ) : (

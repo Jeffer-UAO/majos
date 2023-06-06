@@ -3,7 +3,7 @@ import {
   FooterApp,
   Promotion,
   NotFound,
-  Separator,
+  Redes,
 } from "@/components";
 import { size } from "lodash";
 import { BasicLayout } from "@/layouts";
@@ -16,8 +16,7 @@ export default function OfertPage(props) {
   return (
     <>
       <BasicLayout>
-        <Separator />
-        <Separator />
+      <Redes />
         {hasProduct ? (
           <Promotion products={products} />
         ) : (
