@@ -14,12 +14,11 @@ export function ListCategories(props) {
         <h1>CATEGORÍAS</h1>
         <div className={styles.list}>
           {map(categories, (category) => (
-            <div key={category.id}>
+            <div key={category.id}  className={styles.skeleton}>
               <Link href={`/products/${category.slug}`}>
                 <CardImg
                   alt="Card image cap"
-                  src={BASE_NAME + category.image}
-                  className={styles.skeleton}
+                  src={BASE_NAME + category.image}                 
                 />
 
                 <div className={styles.category}>
