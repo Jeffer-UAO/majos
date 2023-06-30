@@ -1,10 +1,7 @@
 .space {
-  background: rgb(131, 58, 180);
-  background: linear-gradient(
-    0deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(255, 234, 239, 1) 78%
-  );
+  padding: 0.3rem;
+  background: rgb(238, 212, 255);
+ 
   position: sticky;
 
   top: 0;
@@ -14,11 +11,6 @@
   align-items: center;
   padding-bottom: 0.3rem;
   border-bottom: 2px solid white;
-
- 
-  .phone {
-    
-  }
 
   p {
     color: #790389;
