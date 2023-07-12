@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { BASE_NAME } from "@/config/constants";
 import {
   CardImg,
   CardSubtitle,
@@ -8,24 +10,23 @@ import {
   ModalBody,
   ModalFooter,
   FormGroup,
-  Label,
   Input,
 } from "reactstrap";
 import { map } from "lodash";
-import { BASE_NAME } from "@/config/constants";
 import { WhatsApp } from "../WhatsApp";
 import { toast } from "react-toastify";
+
+import { useCart, useAuth } from "@/hooks";
 
 import styles from "./ListProduts.module.scss";
 import Link from "next/link";
 
-import { useCart } from "@/hooks/useCart";
-import { ModalBasic } from "../Common";
-import { useState } from "react";
-
 export function Listproducts(props) {
   const { products, title } = props;
+
   const { addCart, loading } = useCart();
+  const { user  } = useAuth();
+
   const [isOpen, setIsOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [idProduct, setIdPropduct] = useState();
@@ -41,9 +42,7 @@ export function Listproducts(props) {
 
   const addData = () => {
     addCart(idProduct, quantity);
-
     toast.success("¡Se agrego con exito!");
-
     toggleModal();
   };
 
@@ -58,52 +57,57 @@ export function Listproducts(props) {
       <div className={styles.list}>
         {map(products, (product, index) => (
           <div key={index} className={styles.list__product}>
-            <div>
-              <Link href={`/${product.productData.slug}`}>
-                <CardImg
-                  alt="Card image cap"
-                  src={BASE_NAME + product.productData.images}
-                />
-              </Link>
-              <div className={styles.product}>
-                <CardTitle className={styles.title}>
-                  <h5>{product.productData.name_extend}</h5>
-                </CardTitle>
+            <Link href={`/${product.productData.slug}`}>
+              <h5>{product.productData.name_extend}</h5>
 
-                <div className={styles.price}>
-                  <CardSubtitle>
-                    {product.productData.price2 > 0 && (
-                      <h6>Por mayor $ {product.productData.price2}</h6>
+              <CardImg
+                alt="Card image cap"
+                src={BASE_NAME + product.productData.images}
+              />
+            </Link>
+            <div className={styles.product}>
+              <div className={styles.price}>
+                {/* TODO: Usuarios registrados */}
+                
+                  {user && (
+                    <div className={styles.price1}>
+                      <p>COP.</p>
+                      <h6>$ {product.productData.price1}</h6>
+                    </div>
+                  )}
+
+                {/* {product.productData.price2 > 0 && (
+                      <h6>POR MAYOR $ {product.productData.price2}</h6>
                     )}
                     {product.productData.price1 > 0 && (
-                      <h6>Al detal $ {product.productData.price1}</h6>
-                    )}
-                  </CardSubtitle>
-
-
-                  <div>
-                    <WhatsApp
-                      phoneNumber="+573103900666"
-                      message={
-                        BASE_NAME +
-                        product.productData.images +
-                        " " +
-                        product.productData.name_extend +
-                        " " +
-                        "Referencia: " +
-                        product.productData.ref
-                      }
-                    />
-                  </div>
-                </div>
+                      <h6>AL DETAL $ {product.productData.price1}</h6>
+                    )} */}
               </div>
             </div>
-            <Button
-              color="primary"
-              onClick={() => addProductId(product.productData.codigo)}
-            >
-              Agregar al Carrito
-            </Button>
+
+            <div className={styles.btns}>
+              <Button
+                color="primary"
+                onClick={() => addProductId(product.productData.codigo)}
+              >
+                Agregar al Carrito
+              </Button>
+
+              <div className={styles.wsp}>
+                <WhatsApp
+                  phoneNumber="+573103900666"
+                  message={
+                    BASE_NAME +
+                    product.productData.images +
+                    " " +
+                    product.productData.name_extend +
+                    " " +
+                    "Referencia: " +
+                    product.productData.ref
+                  }
+                />
+              </div>
+            </div>
           </div>
         ))}
       </div>

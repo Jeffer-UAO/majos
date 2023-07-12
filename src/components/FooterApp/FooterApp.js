@@ -1,12 +1,12 @@
 import { WhatsApp } from "../WhatsApp";
-import styles from "./FooterApp.module.scss";
-import { AiOutlineHome } from "react-icons/ai";
-import { MdOutlineCategory } from "react-icons/md";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { CiUser } from "react-icons/ci";
-import { BtnLink } from "../Common";
+import { BtnLink, BtnModal } from "../Common";
 import { useCart } from "@/hooks/useCart";
 
+import { MdOutlineCategory } from "react-icons/md";
+import { CiUser } from "react-icons/ci";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
+import styles from "./FooterApp.module.scss";
 export function FooterApp() {
   const { total } = useCart();
   return (
@@ -38,11 +38,7 @@ export function FooterApp() {
           />
         </div>
 
-        <BtnLink
-          link={"https://majos.catalogointeractivo.com.co/admin-dashboard/"}
-          title={"ADMI"}
-          logo={<CiUser size={20} />}
-        />
+        <BtnModal />
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
+
 import { useCart } from "@/hooks/useCart";
 import { Products } from "@/api/products";
 import { Footer, FooterCart, ListCart, NotFound, Redes } from "@/components";
@@ -10,12 +12,13 @@ const productCtrl = new Products();
 
 export default function CartPage() {
   const { cart } = useCart("");
+  const router = useRouter();
+
   const [product, setProduct] = useState("");
-  const [load, setLoad] = useState(true);
-  const hasProduct = size(product) > 0;
-
   const [newProduct, setNewProduct] = useState("");
+  const [load, setLoad] = useState(true);
 
+  const hasProduct = size(product) > 0;
   const identificadorUnico = generarIdentificadorUnico();
 
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function CartPage() {
            Producto: newRecord.name_extend,
             Referencia: newRecord.ref,
             Cantidad: newRecord.quantity,
-            Imagen: BASE_NAME + newRecord.images,          
+            Imagen:  BASE_NAME + newRecord.images,          
           },);
         }
         const newArrayAsString = JSON.stringify(newObjectArray, null, 2);   

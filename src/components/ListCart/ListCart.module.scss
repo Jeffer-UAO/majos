@@ -3,57 +3,45 @@
   background-color: #ebebeb;
   width: 100dvw;
   .card {
-    background-color: rgb(246, 245, 245);
-
-    border: solid 5px white;
+    background-color: rgb(255, 255, 255);
+    border: solid 2px white;
     display: flex;
     margin: 0.3rem;
     border-radius: 0.5rem;
     justify-content: space-between;
 
     .detalle {
-      position: relative;
-      width: 100%;
-      align-items: flex-start;
-      padding: 0.5rem;
-
-      .btnDelete {
-        position: absolute;
-        top: 0;
-        right: 3.5px;
-
-        cursor: pointer;
-        font-size: 10px;
-        background-color: #5252521b;
-        border-radius: 0.5rem;
-        padding: 0.3rem;
-        svg {
-          margin: 0;
+      padding: 0 0.5rem 0 0.5rem;
+      .name {
+        font-weight: 500;
+        p {
+          text-transform: uppercase;
+          font-size: 1rem;
+          color: rgb(8, 1, 137);
         }
       }
 
-      .name {
-        max-width: 10rem;
-        text-transform: uppercase;
-        font-weight: 600;
-        font-size: 1rem;
-        color: rgb(8, 1, 137);
-        //  line-height: 1.8125rem;
-        //  font-family: Poppins, BlinkMacSystemFont, Roboto, sans-serif;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        text-align: unset;
-      }
       .price {
-        font-size: 12px;
-        color: rgb(128, 151, 178);
+        font-size: 1rem;
+        color: rgb(253, 56, 79);
+        font-weight: 600;
       }
     }
+
+    .btnDelete {
+      cursor: pointer;
+
+      background-color: #52525200;
+      border-radius: 0.5rem;
+      padding: 0.3rem;
+      svg {
+        margin: 0;
+      }
+    }
+
     .btn {
       display: flex;
       align-items: center;
-      text-align: center;
       justify-content: center;
 
       p {
@@ -65,8 +53,8 @@
     }
 
     img {
-      width: 7rem;
-      max-height: 7rem;
+      width: 5rem;
+      height: 6rem;
       object-fit: cover;
       object-position: center center;
       border-radius: 0.5rem 0 0 0.5rem;

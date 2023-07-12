@@ -1,24 +1,26 @@
+import { BASE_NAME } from "@/config/constants";
+
 import { Button, CardImg } from "reactstrap";
 import { map } from "lodash";
-import { BASE_NAME } from "@/config/constants";
-import { BsTrash3 } from "react-icons/bs";
-
 import { toast } from "react-toastify";
 
-import { useCart } from "@/hooks/useCart";
+import { useCart, useAuth } from "@/hooks";
 
 import styles from "./ListCart.module.scss";
+import { BsTrash3 } from "react-icons/bs";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 
 export function ListCart(props) {
   const { product } = props;
+
   const { loading, decreaseCart, incrementCart, deleteCart } = useCart();
+  const { user } = useAuth();
 
   return (
-    <div>       
+    <div>
       <div className={styles.list}>
-      <h4>Carrito</h4>
+        <h4>CARRITO</h4>
         {map(product, (item) => (
           <div key={item.codigo} className={styles.card}>
             <CardImg
@@ -29,9 +31,8 @@ export function ListCart(props) {
 
             <div className={styles.detalle}>
               <p className={styles.name}>{item.name_extend}</p>
+              {user && <p className={styles.price}>COP. $ {item.price1}</p>}
 
-              <p className={styles.price}>Detal: $ {item.price1}</p>
-              <p className={styles.price}>Mayor: $ {item.price2}</p>
               {/* <p className={styles.quantity}>
                 Total: $ {item.quantity * item.price1}
               </p> */}
@@ -49,14 +50,13 @@ export function ListCart(props) {
                   color="green"
                 />
               </div>
-
-              <Button
-                onClick={() => deleteCart(item.codigo)}
-                className={styles.btnDelete}
-              >
-                <BsTrash3 size="15" color="red" />
-              </Button>
             </div>
+            <Button
+              onClick={() => deleteCart(item.codigo)}
+              className={styles.btnDelete}
+            >
+              <BsTrash3 size="20" color="red" />
+            </Button>
           </div>
         ))}
         {/* <h2>Total</h2> */}
