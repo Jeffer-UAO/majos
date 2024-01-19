@@ -16,8 +16,8 @@ import { useRouter } from "next/router";
 import { CiUser } from "react-icons/ci";
 import styles from "./BtnLink.module.scss";
 
-export function BtnModal(props) {
-    const router = useRouter();
+export function BtnModal() {
+  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,13 +42,13 @@ export function BtnModal(props) {
       <Modal className={styles.modal} isOpen={isOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>INGRESAR COMO:</ModalHeader>
 
-        <ModalBody className={styles.modal__body}>      
-            <Button color="primary" onClick={handleClickAdmin}>
-              ADMINISTRADOR
-            </Button>{" "}
-            <Button color="secondary" onClick={handleClickClient}>
-              CLIENTE
-            </Button>     
+        <ModalBody className={styles.modal__body}>
+          <Button color="primary" onClick={handleClickAdmin}>
+            ADMINISTRADOR
+          </Button>{" "}
+          <Button color="secondary" onClick={handleClickClient}>
+            CLIENTE
+          </Button>
         </ModalBody>
       </Modal>
     </div>
